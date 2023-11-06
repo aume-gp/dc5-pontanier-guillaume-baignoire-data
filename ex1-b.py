@@ -16,14 +16,17 @@ for lettre in phrase:
     else:
         phrasemin += lettre
 
+def caracterespecial(char):
+    return ('a' <= char <= 'z') or ('A' <= char <= 'Z') or ('0' <= char <= '9')
+
 nbmots = 0
 for i, char in enumerate(phrase):
-    if char.isalnum():
-        if i + 1 == len(phrase) or not phrase[i + 1].isalnum():
+    if caracterespecial(char):
+        if i + 1 == len(phrase) or not caracterespecial(phrase[i + 1]):
             nbmots += 1
     else:
         if not char.isspace():
-            if i + 1 == len(phrase) or phrase[i + 1].isspace() or phrase[i + 1].isalnum():
+            if i + 1 == len(phrase) or phrase[i + 1].isspace() or caracterespecial(phrase[i + 1]):
                 nbmots += 1
 
 print("La phrase en majuscules :", phrasemaj)
